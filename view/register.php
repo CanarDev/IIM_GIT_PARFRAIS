@@ -2,6 +2,12 @@
 	<section id="login-container">
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 midway-horizontal midway-vertical fadeInDown animated">
 			<div id="logbox" class="register">
+			<?php if(isset($error) && !empty($error)){ ?>
+				<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<?php echo $error; ?>
+				</div>
+			<?php } ?>
 				<h1><i class="fa fa-soundcloud"></i> Inscrivez-vous !</h1>
 				<?php if(isset($_SESSION['message']) && !empty($_SESSION['message'])){ ?>
 				<div class="alert alert-danger alert-dismissable">
