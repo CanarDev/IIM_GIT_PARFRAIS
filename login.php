@@ -17,14 +17,21 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-		// Force user connection to access dashboard
-		userConnection($db, $email, $password);
-		
-		header('Location: dashboard.php');
+        $result = userConnection($db, $email, $password);
 
-	}else{
-		$error = 'Champs requis !';
-	}
+        // Vérifier le résultat
+        if($result){
+            // Si les identifiants sont corrects, rediriger vers dashboard.php
+            header('Location: dashboard.php');
+            exit();
+        }else{
+            // Si les identifiants sont incorrects, stocker le message d'erreur
+            $error = 'Mauvais identifiants';
+        }
+
+    }else{
+        $error = 'Champs requis !';
+    }
 }
 
 /******************************** 
